@@ -5,181 +5,217 @@
 <meta name="description" content="Real-time Ebola outbreak social media monitor for Rwanda and the region." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ebola Outbreak — Social Media Monitor: Rwanda & Region</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light; }
+  :root {
+    color-scheme: light;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+    --shadow-md: 0 2px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.08);
+    --radius: 10px;
+    --border: 1px solid #e8ecf0;
+  }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f0f4f8;
-    color: #1a202c;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    color: #111827;
     min-height: 100vh;
-    padding: 0 0 40px 0;
+    padding: 0 0 48px 0;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ── HEADER ── */
   .header {
     background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 60%, #dc2626 100%);
     color: #fff;
-    padding: 24px 32px 20px;
+    padding: 28px 36px 24px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .header h1 { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
-  .header .subtitle { font-size: 0.85rem; opacity: 0.85; margin-top: 4px; }
-  .header .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; }
+  .header .subtitle { font-size: 0.83rem; opacity: 0.6; margin-top: 5px; font-weight: 400; }
+  .header .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
   .badge {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 20px;
-    padding: 3px 11px;
-    font-size: 0.72rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-  .badge.red { background: #fef2f2; color: #b91c1c; border-color: #fca5a5; }
-  .badge.orange { background: #fff7ed; color: #c2410c; border-color: #fdba74; }
-  .badge.yellow { background: #fefce8; color: #a16207; border-color: #fde047; }
+  .badge.red { background: rgba(220,38,38,0.15); color: #fca5a5; border-color: rgba(220,38,38,0.25); }
+  .badge.orange { background: rgba(234,88,12,0.15); color: #fdba74; border-color: rgba(234,88,12,0.25); }
+  .badge.yellow { background: rgba(217,119,6,0.15); color: #fde68a; border-color: rgba(217,119,6,0.25); }
   .header-meta { text-align: right; }
-  .header-meta .updated { font-size: 0.75rem; opacity: 0.75; }
-  .header-meta .pheic { font-size: 0.8rem; background: #fef2f2; color: #7f1d1d; border-radius: 6px; padding: 4px 10px; margin-top: 4px; font-weight: 700; }
+  .header-meta .updated { font-size: 0.73rem; opacity: 0.5; font-weight: 400; }
+  .header-meta .pheic {
+    font-size: 0.73rem;
+    background: rgba(220,38,38,0.18);
+    color: #fca5a5;
+    border: 1px solid rgba(220,38,38,0.28);
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-top: 6px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-block;
+  }
 
   /* ── TABS ── */
   .tabs {
     display: flex;
     gap: 0;
     background: #fff;
-    border-bottom: 2px solid #e2e8f0;
-    padding: 0 24px;
+    border-bottom: 1px solid #e8ecf0;
+    padding: 0 28px;
     position: sticky;
     top: 0;
     z-index: 50;
     overflow-x: auto;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 0 #e8ecf0, 0 2px 8px rgba(0,0,0,0.04);
   }
   .tab-btn {
-    padding: 12px 18px;
-    font-size: 0.82rem;
+    padding: 14px 16px;
+    font-size: 0.8rem;
     font-weight: 600;
-    color: #64748b;
+    color: #6b7280;
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.18s;
+    transition: color 0.15s, border-color 0.15s;
+    letter-spacing: 0.01em;
   }
-  .tab-btn:hover { color: #b91c1c; }
-  .tab-btn.active { color: #b91c1c; border-bottom-color: #b91c1c; }
+  .tab-btn:hover { color: #111827; }
+  .tab-btn.active { color: #991b1b; border-bottom-color: #991b1b; }
 
   /* ── CONTENT ── */
-  .tab-panel { display: none; padding: 24px; max-width: 1200px; margin: 0 auto; }
+  .tab-panel { display: none; padding: 28px; max-width: 1240px; margin: 0 auto; }
   .tab-panel.active { display: block; }
 
   /* ── STAT CARDS ── */
   .stat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
-    margin-bottom: 24px;
+    gap: 12px;
+    margin-bottom: 28px;
   }
   .stat-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 18px 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border-top: 4px solid #e2e8f0;
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
+    position: relative;
+    overflow: hidden;
   }
-  .stat-card.red { border-top-color: #dc2626; }
-  .stat-card.orange { border-top-color: #ea580c; }
-  .stat-card.yellow { border-top-color: #d97706; }
-  .stat-card.green { border-top-color: #16a34a; }
-  .stat-card.blue { border-top-color: #2563eb; }
-  .stat-card .val { font-size: 2rem; font-weight: 800; line-height: 1; }
-  .stat-card .lbl { font-size: 0.72rem; color: #64748b; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .stat-card .sub { font-size: 0.78rem; color: #94a3b8; margin-top: 3px; }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: #e8ecf0;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .stat-card.red::before { background: #dc2626; }
+  .stat-card.orange::before { background: #ea580c; }
+  .stat-card.yellow::before { background: #d97706; }
+  .stat-card.green::before { background: #16a34a; }
+  .stat-card.blue::before { background: #2563eb; }
+  .stat-card .val { font-size: 1.9rem; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: #111827; }
+  .stat-card .lbl { font-size: 0.69rem; color: #6b7280; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .stat-card .sub { font-size: 0.76rem; color: #9ca3af; margin-top: 4px; }
 
   /* ── SECTION TITLES ── */
   .section-title {
-    font-size: 1rem;
+    font-size: 0.93rem;
     font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 14px;
+    color: #111827;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: -0.01em;
   }
-  .section-title .icon { font-size: 1.1rem; }
+  .section-title .icon { font-size: 1rem; }
 
   /* ── PLATFORM CARDS ── */
   .platform-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 28px;
   }
   .platform-card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 18px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border-left: 5px solid #e2e8f0;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
+    transition: box-shadow 0.15s;
   }
-  .platform-card.x { border-left-color: #000; }
-  .platform-card.tiktok { border-left-color: #010101; }
-  .platform-card.facebook { border-left-color: #1877F2; }
-  .platform-card.youtube { border-left-color: #FF0000; }
-  .platform-card.whatsapp { border-left-color: #25D366; }
-  .platform-card.official { border-left-color: #7c3aed; }
+  .platform-card:hover { box-shadow: var(--shadow-md); }
 
   .platform-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
   }
   .platform-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: #fff;
     flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
   }
-  .platform-icon.x { background: #000; }
+  .platform-icon.x { background: #0f0f0f; }
   .platform-icon.tiktok { background: #010101; }
   .platform-icon.facebook { background: #1877F2; }
   .platform-icon.youtube { background: #FF0000; }
   .platform-icon.whatsapp { background: #25D366; }
-  .platform-icon.official { background: #7c3aed; }
+  .platform-icon.official { background: #6d28d9; }
 
-  .platform-name { font-weight: 700; font-size: 0.95rem; }
-  .platform-volume { font-size: 0.75rem; color: #64748b; }
+  .platform-name { font-weight: 700; font-size: 0.9rem; color: #111827; }
+  .platform-volume { font-size: 0.73rem; color: #6b7280; margin-top: 1px; }
   .narrative-list { list-style: none; }
   .narrative-list li {
     display: flex;
-    gap: 8px;
-    padding: 5px 0;
-    font-size: 0.8rem;
-    border-bottom: 1px solid #f1f5f9;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 0.79rem;
+    border-bottom: 1px solid #f3f4f6;
     color: #374151;
     align-items: flex-start;
+    line-height: 1.45;
   }
   .narrative-list li:last-child { border-bottom: none; }
   .narrative-list li .dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    margin-top: 4px;
+    margin-top: 5px;
     flex-shrink: 0;
   }
   .dot.mis { background: #dc2626; }
@@ -193,87 +229,117 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
   .misinfo-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border-top: 3px solid #dc2626;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
   }
   .misinfo-card .claim {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 700;
     color: #7f1d1d;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: flex;
     align-items: flex-start;
-    gap: 6px;
+    gap: 7px;
+    line-height: 1.4;
   }
-  .misinfo-card .spread { font-size: 0.73rem; color: #64748b; margin-bottom: 6px; }
-  .misinfo-card .fact { font-size: 0.78rem; color: #166534; background: #f0fdf4; border-radius: 6px; padding: 6px 10px; border-left: 3px solid #16a34a; }
+  .misinfo-card .spread { font-size: 0.72rem; color: #6b7280; margin-bottom: 8px; }
+  .misinfo-card .fact {
+    font-size: 0.77rem;
+    color: #166534;
+    background: #f0fdf4;
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: 1px solid #bbf7d0;
+  }
 
   /* ── COUNTRY TABLE ── */
-  .country-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); margin-bottom: 24px; }
-  .country-table th { background: #f8fafc; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; padding: 11px 14px; text-align: left; border-bottom: 1px solid #e2e8f0; }
-  .country-table td { padding: 11px 14px; font-size: 0.83rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  .country-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
+    margin-bottom: 28px;
+  }
+  .country-table th {
+    background: #f9fafb;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b7280;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e8ecf0;
+    font-weight: 600;
+  }
+  .country-table td { padding: 12px 16px; font-size: 0.82rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
   .country-table tr:last-child td { border-bottom: none; }
+  .country-table tbody tr:hover { background: #fafafa; }
   .risk-pill {
     display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.7rem;
+    padding: 2px 9px;
+    border-radius: 5px;
+    font-size: 0.68rem;
     font-weight: 700;
+    letter-spacing: 0.03em;
   }
-  .risk-pill.critical { background: #fef2f2; color: #b91c1c; }
-  .risk-pill.high { background: #fff7ed; color: #c2410c; }
-  .risk-pill.moderate { background: #fefce8; color: #a16207; }
+  .risk-pill.critical { background: #fef2f2; color: #991b1b; }
+  .risk-pill.high { background: #fff7ed; color: #9a3412; }
+  .risk-pill.moderate { background: #fefce8; color: #854d0e; }
   .risk-pill.low { background: #f0fdf4; color: #166534; }
 
   /* ── TIMELINE ── */
-  .timeline { position: relative; padding-left: 28px; margin-bottom: 24px; }
+  .timeline { position: relative; padding-left: 28px; margin-bottom: 28px; }
   .timeline::before {
     content: '';
     position: absolute;
     left: 10px;
     top: 0; bottom: 0;
-    width: 2px;
-    background: #e2e8f0;
+    width: 1px;
+    background: #e8ecf0;
   }
-  .timeline-item { position: relative; margin-bottom: 16px; }
+  .timeline-item { position: relative; margin-bottom: 18px; }
   .timeline-dot {
     position: absolute;
-    left: -24px;
-    top: 4px;
-    width: 14px;
-    height: 14px;
+    left: -23px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: #dc2626;
     border: 2px solid #fff;
-    box-shadow: 0 0 0 2px #dc2626;
+    box-shadow: 0 0 0 1.5px #dc2626;
   }
-  .timeline-dot.blue { background: #2563eb; box-shadow: 0 0 0 2px #2563eb; }
-  .timeline-dot.orange { background: #ea580c; box-shadow: 0 0 0 2px #ea580c; }
-  .timeline-dot.purple { background: #7c3aed; box-shadow: 0 0 0 2px #7c3aed; }
-  .timeline-date { font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-  .timeline-title { font-size: 0.88rem; font-weight: 700; color: #1e293b; margin: 2px 0; }
-  .timeline-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+  .timeline-dot.blue { background: #2563eb; box-shadow: 0 0 0 1.5px #2563eb; }
+  .timeline-dot.orange { background: #ea580c; box-shadow: 0 0 0 1.5px #ea580c; }
+  .timeline-dot.purple { background: #7c3aed; box-shadow: 0 0 0 1.5px #7c3aed; }
+  .timeline-date { font-size: 0.69rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+  .timeline-title { font-size: 0.86rem; font-weight: 700; color: #111827; margin: 3px 0 2px; }
+  .timeline-desc { font-size: 0.77rem; color: #6b7280; line-height: 1.55; }
 
   /* ── CHART WRAPPER ── */
   .chart-wrap {
     background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    margin-bottom: 24px;
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
+    margin-bottom: 28px;
   }
-  .chart-wrap h3 { font-size: 0.88rem; font-weight: 700; color: #374151; margin-bottom: 14px; }
+  .chart-wrap h3 { font-size: 0.86rem; font-weight: 700; color: #111827; margin-bottom: 16px; letter-spacing: -0.01em; }
   .chart-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 28px;
   }
 
   /* ── MONITOR GUIDE ── */
@@ -281,29 +347,27 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
   .guide-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border-top: 3px solid #2563eb;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
   }
-  .guide-card.free { border-top-color: #16a34a; }
-  .guide-card.paid { border-top-color: #7c3aed; }
-  .guide-card.restricted { border-top-color: #dc2626; }
-  .guide-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: #1e293b; }
-  .guide-card p, .guide-card li { font-size: 0.78rem; color: #64748b; line-height: 1.6; }
+  .guide-card h4 { font-size: 0.84rem; font-weight: 700; margin-bottom: 10px; color: #111827; }
+  .guide-card p, .guide-card li { font-size: 0.77rem; color: #6b7280; line-height: 1.65; }
   .guide-card ul { padding-left: 16px; }
   .api-tag {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
     margin-left: 6px;
     vertical-align: middle;
+    letter-spacing: 0.03em;
   }
   .api-tag.free { background: #dcfce7; color: #166534; }
   .api-tag.academic { background: #ede9fe; color: #5b21b6; }
@@ -314,59 +378,70 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     background: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
   }
   .kw {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.76rem;
+    border-radius: 6px;
+    font-size: 0.74rem;
     font-weight: 600;
     cursor: pointer;
+    transition: opacity 0.15s;
   }
+  .kw:hover { opacity: 0.8; }
   .kw.en { background: #dbeafe; color: #1e40af; }
   .kw.fr { background: #ede9fe; color: #5b21b6; }
   .kw.sw { background: #dcfce7; color: #166534; }
   .kw.rw { background: #fff7ed; color: #9a3412; }
 
   /* ── SENTIMENT BAR ── */
-  .sentiment-bar-wrap { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); margin-bottom: 24px; }
-  .sbar-label { font-size: 0.75rem; font-weight: 600; color: #374151; margin-bottom: 5px; display: flex; justify-content: space-between; }
-  .sbar { height: 10px; border-radius: 20px; background: #f1f5f9; margin-bottom: 12px; overflow: hidden; }
+  .sentiment-bar-wrap {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    border: var(--border);
+    margin-bottom: 28px;
+  }
+  .sbar-label { font-size: 0.74rem; font-weight: 600; color: #374151; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .sbar { height: 8px; border-radius: 20px; background: #f1f5f9; margin-bottom: 14px; overflow: hidden; }
   .sbar-fill { height: 100%; border-radius: 20px; transition: width 0.6s ease; }
 
   /* ── LEGEND ── */
-  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
-  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: #64748b; }
-  .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.71rem; color: #6b7280; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
   /* ── NOTICE BOX ── */
   .notice {
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 12px 16px;
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     margin-bottom: 16px;
     display: flex;
     gap: 10px;
     align-items: flex-start;
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  .notice.info { background: #eff6ff; border-left: 4px solid #3b82f6; color: #1e40af; }
-  .notice.warn { background: #fffbeb; border-left: 4px solid #f59e0b; color: #92400e; }
-  .notice.danger { background: #fef2f2; border-left: 4px solid #ef4444; color: #7f1d1d; }
+  .notice.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+  .notice.warn { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+  .notice.danger { background: #fef2f2; border: 1px solid #fecaca; color: #7f1d1d; }
 
   /* ── FOOTER ── */
   .footer {
     text-align: center;
-    font-size: 0.72rem;
-    color: #94a3b8;
-    padding: 20px;
-    border-top: 1px solid #e2e8f0;
+    font-size: 0.71rem;
+    color: #9ca3af;
+    padding: 24px;
+    border-top: 1px solid #e8ecf0;
     margin-top: 8px;
+    letter-spacing: 0.01em;
   }
   .source-link { color: #2563eb; text-decoration: none; }
   .source-link:hover { text-decoration: underline; }
@@ -4772,61 +4847,61 @@ return Plotly;
 
   <div class="section-title"><span class="icon">🇷🇼</span> Rwanda District Breakdown — Heightened Response Zones</div>
   <div class="chart-wrap">
-    <h3>9 Districts Mapped — Social Media Activity &amp; Border Status (May 22, 2026)</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:8px;">
+    <h3>9 Districts Mapped — Social Media Activity &amp; Border Status (May 22, 2026) — Updated</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
 
-      <div style="background:#fef2f2;border-radius:8px;padding:14px;border-left:4px solid #dc2626;">
-        <div style="font-size:1rem;font-weight:800;color:#dc2626;">Rubavu / Gisenyi</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Western Province · DRC border</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">🚫 Petite Barrière, Grande Barrière &amp; Kabuhanga CLOSED · 30,000+ daily crossings halted · Families separated · DRC residents barred even for water · "Ebola opens new Rwanda-DRC tensions front"</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #dc2626;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#991b1b;letter-spacing:-0.01em;">Rubavu / Gisenyi</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Western Province · DRC border</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">🚫 Petite Barrière, Grande Barrière &amp; Kabuhanga CLOSED · 30,000+ daily crossings halted · Families separated · DRC residents barred even for water · "Ebola opens new Rwanda-DRC tensions front"</div>
       </div>
 
-      <div style="background:#fef2f2;border-radius:8px;padding:14px;border-left:4px solid #dc2626;">
-        <div style="font-size:1rem;font-weight:800;color:#dc2626;">Rusizi / Kamembe</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Western Province · DRC-Burundi corridor</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">🚫 Rusizi I &amp; II crossings CLOSED · Burundian traders also stranded · DRC residents denied crossing even for medicine · UNICEF Rwanda awareness campaign active in this corridor</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #dc2626;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#991b1b;letter-spacing:-0.01em;">Rusizi / Kamembe</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Western Province · DRC-Burundi corridor</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">🚫 Rusizi I &amp; II crossings CLOSED · Burundian traders also stranded · DRC residents denied crossing even for medicine · UNICEF Rwanda awareness campaign active in this corridor</div>
       </div>
 
-      <div style="background:#fff7ed;border-radius:8px;padding:14px;border-left:4px solid #ea580c;">
-        <div style="font-size:1rem;font-weight:800;color:#ea580c;">Kigali (Capital)</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Kigali City · National hub</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">WhatsApp chain "Ebola in Kigali" debunked by MoH · RBC coordinating 11-district response · KT Radio &amp; RTV broadcasting Kinyarwanda FAQs daily · University of Rwanda students producing TikTok awareness</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #ea580c;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#9a3412;letter-spacing:-0.01em;">Kigali (Capital)</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Kigali City · National hub</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">WhatsApp chain "Ebola in Kigali" debunked by MoH · RBC coordinating 11-district response · KT Radio &amp; RTV broadcasting Kinyarwanda FAQs daily · University of Rwanda students producing TikTok awareness</div>
       </div>
 
-      <div style="background:#fff7ed;border-radius:8px;padding:14px;border-left:4px solid #ea580c;">
-        <div style="font-size:1rem;font-weight:800;color:#ea580c;">Musanze</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Northern Province · DRC+Uganda border</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Gorilla trekking 30-40% cancellations · Rumor: "Gorillas carry Ebola from DRC forests" · Musanze District Hospital upgraded isolation ward · 3-border zone anxiety</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #ea580c;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#9a3412;letter-spacing:-0.01em;">Musanze</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Northern Province · DRC+Uganda border</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Gorilla trekking 30-40% cancellations · Rumor: "Gorillas carry Ebola from DRC forests" · Musanze District Hospital upgraded isolation ward · 3-border zone anxiety</div>
       </div>
 
-      <div style="background:#fff7ed;border-radius:8px;padding:14px;border-left:4px solid #ea580c;">
-        <div style="font-size:1rem;font-weight:800;color:#ea580c;">Karongi</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Western Province · Lake Kivu shore</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Rumor: "Ebola spreads through Lake Kivu water" · Fishing community halting activity · DRC fishermen banned from landing on Rwanda shore · RBC field teams visiting fishing villages</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #ea580c;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#9a3412;letter-spacing:-0.01em;">Karongi</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Western Province · Lake Kivu shore</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Rumor: "Ebola spreads through Lake Kivu water" · Fishing community halting activity · DRC fishermen banned from landing on Rwanda shore · RBC field teams visiting fishing villages</div>
       </div>
 
-      <div style="background:#fffbeb;border-radius:8px;padding:14px;border-left:4px solid #d97706;">
-        <div style="font-size:1rem;font-weight:800;color:#d97706;">Nyagatare</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Eastern Province · Uganda border</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Agapito border post screening active · Cattle trader concern about Uganda movement · MoH Kinyarwanda content shared at Umudugudu level</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #d97706;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#854d0e;letter-spacing:-0.01em;">Nyagatare</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Eastern Province · Uganda border</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Agapito border post screening active · Cattle trader concern about Uganda movement · MoH Kinyarwanda content shared at Umudugudu level</div>
       </div>
 
-      <div style="background:#fffbeb;border-radius:8px;padding:14px;border-left:4px solid #d97706;">
-        <div style="font-size:1rem;font-weight:800;color:#d97706;">Huye / Butare</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Southern Province · University city</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Univ. of Rwanda medical students producing Kinyarwanda TikTok awareness · Huye District Hospital upgrading isolation · UNICEF campaign reaching Southern Province · Burundi border concern</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #d97706;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#854d0e;letter-spacing:-0.01em;">Huye / Butare</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Southern Province · University city</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Univ. of Rwanda medical students producing Kinyarwanda TikTok awareness · Huye District Hospital upgrading isolation · UNICEF campaign reaching Southern Province · Burundi border concern</div>
       </div>
 
-      <div style="background:#fffbeb;border-radius:8px;padding:14px;border-left:4px solid #d97706;">
-        <div style="font-size:1rem;font-weight:800;color:#d97706;">Kayonza / Rwamagana</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Eastern Province · Transit corridor</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Kigali-Mombasa truck driver health checks · Kagera River corridor monitoring · RBC field teams at market centres · Generally calm — distant from DRC border</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #d97706;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#854d0e;letter-spacing:-0.01em;">Kayonza / Rwamagana</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Eastern Province · Transit corridor</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Kigali-Mombasa truck driver health checks · Kagera River corridor monitoring · RBC field teams at market centres · Generally calm — distant from DRC border</div>
       </div>
 
-      <div style="background:#fffbeb;border-radius:8px;padding:14px;border-left:4px solid #d97706;">
-        <div style="font-size:1rem;font-weight:800;color:#d97706;">Gicumbi / Burera</div>
-        <div style="font-size:0.72rem;color:#64748b;margin-top:3px;">Northern Province · Uganda border</div>
-        <div style="font-size:0.7rem;color:#374151;margin-top:5px;">Cyanika &amp; Kagitumba border posts with Uganda on alert · Cross-border market communities aware · Northern Province health office broadcasting · Lower risk than DRC-border districts</div>
+      <div style="background:#fff;border-radius:0 10px 10px 0;padding:16px 18px;border:1px solid #e8ecf0;border-left:4px solid #d97706;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+        <div style="font-size:0.88rem;font-weight:700;color:#854d0e;letter-spacing:-0.01em;">Gicumbi / Burera</div>
+        <div style="font-size:0.7rem;color:#6b7280;margin-top:4px;font-weight:500;">Northern Province · Uganda border</div>
+        <div style="font-size:0.75rem;color:#4b5563;margin-top:8px;line-height:1.55;">Cyanika &amp; Kagitumba border posts with Uganda on alert · Cross-border market communities aware · Northern Province health office broadcasting · Lower risk than DRC-border districts</div>
       </div>
 
     </div>
