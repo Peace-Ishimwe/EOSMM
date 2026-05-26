@@ -5595,15 +5595,15 @@ return Plotly;
 
   <div class="notice info">
     <span>🇷🇼</span>
-    <div><strong>Rwanda-Only Monitor:</strong> This tab tracks social media activity exclusively within Rwanda — focusing on civilian, community, and grassroots user accounts, not just official voices. Sentiment trends show how public mood has shifted day-by-day since May 15. <strong>Key finding from WHO (May 21):</strong> A <strong>super-spreading event on May 5</strong> was identified partly through social media death reports — confirming social media's critical role in outbreak detection. Over <strong>1,140 civilian and community account categories</strong> monitored across all platforms. Data sourced from WHO briefings, AFRO sitreps, IFRC appeals, and verified news coverage.</div>
+    <div><strong>Rwanda-Only Monitor — Ground Truth (May 26):</strong> Tracks social media + real-world public behavior within Rwanda. <strong>Reality check:</strong> Both Rubavu (Day 9) and Rusizi (Day 8) borders closed. ~45,000 daily crossings disrupted. Documented trader quotes from Rubavu show livelihood impact. <strong>No Ebola cases in Rwanda</strong> — MoH toll-free 114 active, isolation units prepared, tourism continuing. <strong>Key WHO finding (May 21):</strong> The <a href="https://www.nature.com/articles/d41586-026-01646-x" target="_blank"><strong>May 5 super-spreading event</strong></a> was identified partly through social media death reports — confirming this dashboard's purpose. Sources: <a href="https://www.ktpress.rw" target="_blank">KT Press</a> · <a href="https://www.africanews.com" target="_blank">Africanews</a> · <a href="https://www.moh.gov.rw" target="_blank">Rwanda MoH</a> · <a href="https://rw.usembassy.gov" target="_blank">US Embassy Kigali</a></div>
   </div>
 
   <!-- SENTIMENT TREND CHART -->
-  <div class="section-title"><span class="icon">📈</span> Rwanda Sentiment Trend — May 15–24, 2026 (Daily Estimates)</div>
+  <div class="section-title"><span class="icon">📈</span> Rwanda Sentiment Trend — May 15–26, 2026 (Daily Estimates, WHO DG speech inflection visible)</div>
   <div class="chart-wrap" style="max-width:100%;">
     <h3>How public sentiment on Rwandan social media has shifted since the outbreak began</h3>
     <canvas id="rwandaTrendChart" height="160"></canvas>
-    <div style="font-size:0.71rem;color:#94a3b8;margin-top:8px;">⚠️ Analytical estimates based on public posts, hashtag volume shifts, and news reports. Not a statistically sampled survey. Border closure (May 21) and American MEDEVAC (May 22) are visible inflection points.</div>
+    <div style="font-size:0.71rem;color:#94a3b8;margin-top:8px;">⚠️ Analytical estimates based on public posts, hashtag volume shifts, WHO briefings, and news reports (KT Press, Africanews, Rwanda MoH). Not a statistically sampled survey. Key inflection points: Border closure (May 17), Entry ban active (May 22), WHO DG "outpacing us" speech (May 25 → Fear spike), WHO DG travels to DRC (May 26 → Info Seeking spike).</div>
   </div>
 
   <!-- CURRENT SENTIMENT SNAPSHOT -->
@@ -5617,22 +5617,84 @@ return Plotly;
       <div class="legend-item"><div class="legend-dot" style="background:#16a34a"></div>Solidarity / Awareness</div>
     </div>
 
-    <div class="sbar-label"><span>Fear / Panic</span><span>35%</span></div>
-    <div class="sbar"><div class="sbar-fill" style="width:35%;background:#dc2626"></div></div>
+    <div class="sbar-label"><span>Fear / Panic — Border closures, trader losses, US Level 3 advisory</span><span>36%</span></div>
+    <div class="sbar"><div class="sbar-fill" style="width:36%;background:#dc2626"></div></div>
 
-    <div class="sbar-label"><span>Misinformation / Denial ("Ebola is a lie", supplement cures)</span><span>30%</span></div>
-    <div class="sbar"><div class="sbar-fill" style="width:30%;background:#ea580c"></div></div>
+    <div class="sbar-label"><span>Misinformation / Denial — WhatsApp rumors: "Rwanda hiding cases"; "lake water contaminated"</span><span>27%</span></div>
+    <div class="sbar"><div class="sbar-fill" style="width:27%;background:#ea580c"></div></div>
 
-    <div class="sbar-label"><span>Skepticism / Distrust of authorities</span><span>18%</span></div>
-    <div class="sbar"><div class="sbar-fill" style="width:18%;background:#d97706"></div></div>
+    <div class="sbar-label"><span>Skepticism / Distrust — Trader frustration with border closure; DRC tensions context</span><span>21%</span></div>
+    <div class="sbar"><div class="sbar-fill" style="width:21%;background:#d97706"></div></div>
 
-    <div class="sbar-label"><span>Information seeking / curious</span><span>11%</span></div>
-    <div class="sbar"><div class="sbar-fill" style="width:11%;background:#2563eb"></div></div>
+    <div class="sbar-label"><span>Information Seeking — ↑ spike: WHO DG travels to DRC (May 26), people seeking updates</span><span>16%</span></div>
+    <div class="sbar"><div class="sbar-fill" style="width:16%;background:#2563eb"></div></div>
 
-    <div class="sbar-label"><span>Solidarity / public health awareness</span><span>6%</span></div>
-    <div class="sbar"><div class="sbar-fill" style="width:6%;background:#16a34a"></div></div>
+    <div class="sbar-label"><span>Solidarity / Awareness — Community health teams, MoH toll-free 114 promoted</span><span>8%</span></div>
+    <div class="sbar"><div class="sbar-fill" style="width:8%;background:#16a34a"></div></div>
 
-    <div style="font-size:0.72rem;color:#94a3b8;margin-top:8px;">⚠️ Rwanda-specific estimates. Regional average (inc. DRC) skews higher on Misinformation.</div>
+    <div style="font-size:0.72rem;color:#94a3b8;margin-top:8px;">⚠️ Rwanda-specific estimates derived from KT Press, Africanews, Rwanda MoH, US Embassy Kigali health alerts (May 15–26). Rwanda public is significantly better informed than DRC due to active MoH communications — misinformation rate lower. Sources: <a href="https://www.ktpress.rw/2026/05/rwanda-temporarily-closes-rusizi-border-crossings-as-ebola-outbreak-in-drc-raises-regional-alert/" target="_blank" style="color:#94a3b8;">KT Press</a> · <a href="https://www.moh.gov.rw/news-detail/rwanda-is-closely-monitoring-the-ebola-outbreak-in-the-drc" target="_blank" style="color:#94a3b8;">Rwanda MoH</a></div>
+  </div>
+
+  <!-- GROUND-LEVEL REALITY BOX -->
+  <div class="section-title" style="margin-top:24px;"><span class="icon">🏘️</span> Ground-Level Reality — What's Actually Happening in Rwanda (May 26)</div>
+
+  <!-- BORDER SITUATION -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:20px;">
+
+    <div style="background:#fef2f2;padding:16px;border-left:4px solid #dc2626;">
+      <div style="font-weight:800;color:#dc2626;font-size:0.85rem;margin-bottom:8px;">🚧 Rubavu Border — Closed Day 9</div>
+      <div style="font-size:0.78rem;color:#374151;line-height:1.7;">
+        Petite Barrière, Grande Barrière & Kabuhanga crossing points <strong>shut May 17</strong> as Goma case confirmed. ~<strong>45,000 daily crossings</strong> disrupted. Essential movement continues: students, humanitarian workers, food transporters — under strict health screening.
+        <div style="margin-top:8px;padding:8px;background:#fff;border-radius:4px;font-style:italic;color:#1f2937;">
+          "<strong>We would like the government to find a solution so that we can transport our goods normally across the border while still taking precautions.</strong>"<br>
+          <span style="font-size:0.69rem;color:#6b7280;">— Nsengiyaremye Kigendi, Rubavu trader (<a href="https://www.africanews.com/2026/05/20/rwanda-tightens-border-controls-over-deadly-ebola-outbreak-in-dr-congo/" target="_blank" style="color:#6b7280;">Africanews, May 20</a>)</span>
+        </div>
+        <div style="margin-top:6px;padding:8px;background:#fff;border-radius:4px;font-style:italic;color:#1f2937;">
+          "Traders are now forced to <strong>leave goods at the border for transporters on the Congolese side to collect</strong>, reducing profits and increasing losses."<br>
+          <span style="font-size:0.69rem;color:#6b7280;">— Twiringirimana Daniel, Rubavu resident (<a href="https://www.africanews.com/2026/05/20/rwanda-tightens-border-controls-over-deadly-ebola-outbreak-in-dr-congo/" target="_blank" style="color:#6b7280;">Africanews, May 20</a>)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff7ed;padding:16px;border-left:4px solid #ea580c;">
+      <div style="font-weight:800;color:#ea580c;font-size:0.85rem;margin-bottom:8px;">🛂 Rusizi Border — Closed Day 8</div>
+      <div style="font-size:0.78rem;color:#374151;line-height:1.7;">
+        Rusizi I & II posts closed <strong>May 18</strong> (<a href="https://www.ktpress.rw/2026/05/rwanda-temporarily-closes-rusizi-border-crossings-as-ebola-outbreak-in-drc-raises-regional-alert/" target="_blank" style="color:#ea580c;">KT Press</a>). Rusizi–Bukavu corridor is one of Rwanda's busiest. Thousands of traders, workers and families rely on it daily. MoH rapid response teams on standby at both crossing points.
+        <div style="margin-top:8px;font-size:0.72rem;color:#6b7280;">
+          <div>📞 MoH toll-free: <strong>114</strong> (report symptoms)</div>
+          <div>🏥 Isolation units prepared at designated facilities</div>
+          <div>✋ Public advised: avoid handshakes, wash hands, limit non-essential DRC travel</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#f0fdf4;padding:16px;border-left:4px solid #16a34a;">
+      <div style="font-weight:800;color:#16a34a;font-size:0.85rem;margin-bottom:8px;">✅ Kigali / Tourism — Operational</div>
+      <div style="font-size:0.78rem;color:#374151;line-height:1.7;">
+        <strong>No Ebola cases in Rwanda</strong> (confirmed <a href="https://x.com/RwandaHealth/status/2057790371657101712" target="_blank" style="color:#16a34a;">@RwandaHealth</a>). Tourism continuing normally:
+        <div style="margin-top:6px;">
+          <div>🦍 Volcanoes National Park — open, gorilla permits available</div>
+          <div>🌊 Nyungwe & Akagera — fully operational</div>
+          <div>🏨 Kigali hotels & conference venues — no disruptions</div>
+          <div>⚠️ US State Dept: Rwanda "Reconsider Travel" (Level 3) — some tour operator rebookings</div>
+          <div style="margin-top:6px;color:#6b7280;font-size:0.7rem;">Sources: <a href="https://www.travelandtourworld.com/news/article/omyxqke85xv1/" target="_blank" style="color:#6b7280;">Travel & Tour World</a> · <a href="https://nextgensafaris.com/ebola-outbreak-in-uganda-and-drc/" target="_blank" style="color:#6b7280;">Next Gen Safaris</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#eff6ff;padding:16px;border-left:4px solid #2563eb;">
+      <div style="font-weight:800;color:#2563eb;font-size:0.85rem;margin-bottom:8px;">📋 Rwanda MoH Response Status</div>
+      <div style="font-size:0.78rem;color:#374151;line-height:1.7;">
+        <div>🔴 Entry ban: foreign nationals with DRC travel in past 30 days denied entry (May 22)</div>
+        <div>🔴 Rwandan nationals/residents from DRC: mandatory quarantine</div>
+        <div>🟡 Airport: enhanced screening at Kigali International Airport</div>
+        <div>🟢 Rapid Response Teams: on standby, treatment centres prepared</div>
+        <div>🟢 WHO praised Rwanda's preparedness (<a href="https://www.moh.gov.rw/news-detail/world-health-organization-praises-rwandas-ebola-preparedness-efforts" target="_blank" style="color:#2563eb;">Rwanda MoH</a>)</div>
+        <div>🟢 Africa CDC IMST: coordinating cross-border surveillance</div>
+        <div style="margin-top:6px;color:#6b7280;font-size:0.7rem;">US Embassy Kigali issued health alerts: May 15, May 18, May 22, May 23</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- KEY INFLECTION POINTS -->
@@ -6012,11 +6074,11 @@ function initMapIfNeeded() {
     new Chart(rwCtx, {
       type: 'line',
       data: {
-        labels: ['May 15','May 16','May 17','May 18','May 19','May 20','May 21','May 22','May 23','May 24'],
+        labels: ['May 15','May 16','May 17','May 18','May 19','May 20','May 21','May 22','May 23','May 24','May 25','May 26'],
         datasets: [
           {
             label: 'Fear / Panic',
-            data: [30, 38, 40, 38, 36, 34, 39, 41, 37, 35],
+            data: [30, 38, 40, 38, 36, 34, 39, 41, 37, 35, 38, 36],
             borderColor: '#dc2626',
             backgroundColor: 'rgba(220,38,38,0.08)',
             fill: false,
@@ -6026,7 +6088,7 @@ function initMapIfNeeded() {
           },
           {
             label: 'Misinformation / Denial',
-            data: [25, 30, 28, 30, 29, 27, 26, 29, 30, 30],
+            data: [25, 30, 28, 30, 29, 27, 26, 29, 30, 30, 29, 27],
             borderColor: '#ea580c',
             backgroundColor: 'rgba(234,88,12,0.08)',
             fill: false,
@@ -6036,7 +6098,7 @@ function initMapIfNeeded() {
           },
           {
             label: 'Skepticism / Distrust',
-            data: [15, 13, 14, 16, 17, 18, 20, 17, 18, 18],
+            data: [15, 13, 14, 16, 17, 18, 20, 17, 18, 18, 19, 21],
             borderColor: '#d97706',
             backgroundColor: 'rgba(217,119,6,0.08)',
             fill: false,
@@ -6046,7 +6108,7 @@ function initMapIfNeeded() {
           },
           {
             label: 'Information Seeking',
-            data: [20, 12, 11, 10, 11, 13, 10, 10, 10, 11],
+            data: [20, 12, 11, 10, 11, 13, 10, 10, 10, 11, 14, 16],
             borderColor: '#2563eb',
             backgroundColor: 'rgba(37,99,235,0.08)',
             fill: false,
@@ -6056,7 +6118,7 @@ function initMapIfNeeded() {
           },
           {
             label: 'Solidarity / Awareness',
-            data: [10, 7, 7, 6, 7, 8, 5, 3, 5, 6],
+            data: [10, 7, 7, 6, 7, 8, 5, 3, 5, 6, 7, 8],
             borderColor: '#16a34a',
             backgroundColor: 'rgba(22,163,74,0.08)',
             fill: false,
