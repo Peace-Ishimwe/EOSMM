@@ -148,11 +148,44 @@
   .section-title .icon { font-size: 1rem; }
 
   /* ── PLATFORM CARDS ── */
+  .platform-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  .pf-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    background: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .pf-btn:hover { border-color: #94a3b8; color: #1e293b; }
+  .pf-btn.active { background: #1e293b; color: #fff; border-color: #1e293b; }
+  .pf-btn .pf-count {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 1px 6px;
+    font-size: 0.68rem;
+  }
+  .pf-btn:not(.active) .pf-count { background: #f1f5f9; color: #64748b; }
   .platform-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    columns: 2;
+    column-gap: 16px;
     margin-bottom: 28px;
+  }
+  @media (max-width: 900px) {
+    .platform-grid { columns: 1; }
   }
   .platform-card {
     background: #fff;
@@ -163,6 +196,7 @@
     transition: box-shadow 0.15s;
   }
   .platform-card:hover { box-shadow: var(--shadow-md); }
+  .platform-card { break-inside: avoid; display: inline-block; width: 100%; margin-bottom: 16px; }
 
   .platform-header {
     display: flex;
@@ -4515,7 +4549,7 @@ return Plotly;
 
   <div class="section-title" style="font-size:0.8rem;margin-top:4px;color:#1e3a5f;">🏛️ Government &amp; Public Health Institutions</div>
   <div class="platform-grid">
-    <div class="platform-card official">
+    <div class="platform-card official" data-platform="official">
       <div class="platform-header">
         <div class="platform-icon official">🇷🇼</div>
         <div>
@@ -4659,7 +4693,7 @@ return Plotly;
 
   <div class="section-title" style="font-size:0.8rem;margin-top:16px;color:#1e3a5f;">📰 Media Outlets &amp; Journalists</div>
   <div class="platform-grid">
-    <div class="platform-card x">
+    <div class="platform-card x" data-platform="x">
       <div class="platform-header">
         <div class="platform-icon x">📡</div>
         <div>
@@ -4726,7 +4760,7 @@ return Plotly;
 
   <div class="section-title" style="font-size:0.8rem;margin-top:16px;color:#1e3a5f;">👥 Community Voices, Diaspora &amp; Individual Accounts</div>
   <div class="platform-grid">
-    <div class="platform-card tiktok">
+    <div class="platform-card tiktok" data-platform="tiktok">
       <div class="platform-header">
         <div class="platform-icon tiktok">🗣️</div>
         <div>
@@ -4757,7 +4791,7 @@ return Plotly;
         <li><div class="dot info"></div>ESPN Africa: reporting DRC team now training in Belgium; first game June 17 vs Portugal</li>
       </ul>
     </div>
-    <div class="platform-card whatsapp">
+    <div class="platform-card whatsapp" data-platform="whatsapp">
       <div class="platform-header">
         <div class="platform-icon whatsapp">🏘️</div>
         <div>
@@ -4839,7 +4873,18 @@ return Plotly;
   </div>
 
   <div class="section-title"><span class="icon">📱</span> Platform-by-Platform Analysis</div>
-  <div class="platform-grid">
+
+  <div class="platform-filter-bar" id="platformFilterBar">
+    <button class="pf-btn active" onclick="filterPlatform('all', this)">🌐 All Platforms <span class="pf-count">6</span></button>
+    <button class="pf-btn" onclick="filterPlatform('x', this)">𝕏 Twitter <span class="pf-count">18</span></button>
+    <button class="pf-btn" onclick="filterPlatform('tiktok', this)">🎵 TikTok <span class="pf-count">7</span></button>
+    <button class="pf-btn" onclick="filterPlatform('facebook', this)">fb Facebook <span class="pf-count">6</span></button>
+    <button class="pf-btn" onclick="filterPlatform('whatsapp', this)">💬 WhatsApp <span class="pf-count">10</span></button>
+    <button class="pf-btn" onclick="filterPlatform('youtube', this)">▶ YouTube <span class="pf-count">7</span></button>
+    <button class="pf-btn" onclick="filterPlatform('official', this)">🏛️ Official <span class="pf-count">9</span></button>
+  </div>
+
+  <div class="platform-grid" id="platformGrid">
 
     <!-- X / TWITTER -->
     <div class="platform-card x">
@@ -4893,7 +4938,7 @@ return Plotly;
     </div>
 
     <!-- FACEBOOK -->
-    <div class="platform-card facebook">
+    <div class="platform-card facebook" data-platform="facebook">
       <div class="platform-header">
         <div class="platform-icon facebook" style="font-size:0.75rem;">fb</div>
         <div>
@@ -4935,7 +4980,7 @@ return Plotly;
     </div>
 
     <!-- YOUTUBE -->
-    <div class="platform-card youtube">
+    <div class="platform-card youtube" data-platform="youtube">
       <div class="platform-header">
         <div class="platform-icon youtube">▶</div>
         <div>
@@ -6124,6 +6169,27 @@ return Plotly;
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <script>
+  // Platform filter
+  function filterPlatform(platform, btn) {
+    document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#platformGrid .platform-card').forEach(card => {
+      if (platform === 'all' || card.dataset.platform === platform) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    // Switch to single column when filtering one platform
+    var grid = document.getElementById('platformGrid');
+    if (platform === 'all') {
+      grid.style.columns = '';
+    } else {
+      grid.style.columns = '1';
+      grid.style.maxWidth = '800px';
+    }
+  }
+
   // Tab switching
   function showTab(id) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
