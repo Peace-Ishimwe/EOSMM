@@ -4822,53 +4822,76 @@ return Plotly;
   <!-- SCRAPE RESULTS BANNER -->
   <div style="background:#0f172a;border-radius:var(--radius);padding:18px 20px;margin-bottom:20px;border-left:4px solid #38bdf8;">
     <div style="font-weight:800;color:#38bdf8;font-size:0.92rem;margin-bottom:10px;">🔍 May 27 Scrape Results — WHO-Only Stats + Documented Social Media</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;font-size:0.73rem;color:#cbd5e1;">
-      <div>
-        <div style="color:#94a3b8;font-weight:700;margin-bottom:4px;">✅ CONFIRMED JOURNALIST HANDLES</div>
-        <div><a href="https://x.com/HelenBranswell" target="_blank" style="color:#38bdf8;">@HelenBranswell</a> — STAT News (verified via STAT article meta tags)</div>
-        <div><a href="https://x.com/apoorva_nyc" target="_blank" style="color:#38bdf8;">@apoorva_nyc</a> — NYT Global Health (verified via Muck Rack)</div>
-        <div><a href="https://x.com/nature" target="_blank" style="color:#38bdf8;">@nature</a> — Nature journal (verified via nature.com footer)</div>
-        <div><a href="https://x.com/statnews" target="_blank" style="color:#38bdf8;">@statnews</a> — STAT News outlet (verified via STAT footer)</div>
-        <div><a href="https://x.com/DrTomFrieden" target="_blank" style="color:#38bdf8;">@DrTomFrieden</a> — Former CDC Director (cited May 20 Nature coverage)</div>
-      </div>
-      <div>
-        <div style="color:#94a3b8;font-weight:700;margin-bottom:4px;">🏥 CONFIRMED INSTITUTIONAL ACCOUNTS</div>
-        <div><a href="https://x.com/WHO" target="_blank" style="color:#38bdf8;">@WHO</a> · <a href="https://x.com/DrTedros" target="_blank" style="color:#38bdf8;">@DrTedros</a> — WHO &amp; DG · May 25: <em>"the epidemic is outpacing us"</em> (900+ suspected, 101 confirmed)</div>
-        <div><a href="https://x.com/AfricaCDC" target="_blank" style="color:#38bdf8;">@AfricaCDC</a> — Declared PHECS May 18</div>
-        <div><a href="https://x.com/CDCgov" target="_blank" style="color:#38bdf8;">@CDCgov</a> — HAN00530 issued</div>
-        <div><a href="https://x.com/IFRC" target="_blank" style="color:#38bdf8;">@IFRC</a> — CHF 29M appeal; 3 volunteers dead</div>
-        <div><a href="https://x.com/MSF" target="_blank" style="color:#38bdf8;">@MSF</a> — Active Bunia, Drodro, Fataki</div>
-        <div><a href="https://x.com/FAORwanda" target="_blank" style="color:#38bdf8;">@FAORwanda</a> — FAO Rwanda; food security &amp; outbreak impact tracking</div>
-      </div>
-      <div>
-        <div style="color:#94a3b8;font-weight:700;margin-bottom:4px;">🧬 NAMED EXPERTS IN COVERAGE</div>
-        <div style="color:#e2e8f0;"><strong>Ruth McCabe</strong> — Imperial College, lead modeller</div>
-        <div style="color:#e2e8f0;"><strong>Armand Sprecher</strong> — MSF field physician, Ituri</div>
-        <div style="color:#e2e8f0;"><strong>Darryl Falzarano</strong> — Virologist, VIDO Saskatchewan</div>
-        <div style="color:#e2e8f0;"><strong>Tom Geisbert</strong> — Ebola expert, UT Medical Branch</div>
-        <div style="color:#e2e8f0;"><strong>Vasee Moorthy</strong> — WHO R&amp;D Blueprint acting lead</div>
-        <div style="color:#e2e8f0;"><strong>Abdi Rahman Mahamud</strong> — WHO Emergency Response Director</div>
-      </div>
-      <div>
-        <div style="color:#94a3b8;font-weight:700;margin-bottom:4px;">📡 REAL-TIME MONITORING DATA</div>
-        <div style="color:#e2e8f0;font-size:0.7rem;line-height:1.7;">
-          <div style="color:#fbbf24;font-weight:700;margin-bottom:4px;">Dr. Céline Gounder — Infectious Disease Physician (May 17–26, 2026):</div>
-          <div>📊 <strong>640 Ebola videos</strong> across TikTok, Instagram &amp; YouTube in first 48 hours = <strong>68M views</strong></div>
-          <div>🚫 Disinformation keywords: <strong>50 videos</strong>, <strong>2.6M views</strong> in same window</div>
-          <div style="margin-top:4px;color:#fbbf24;">📰 <strong>IRC warns (May 27):</strong> Ebola could become <em>deadliest outbreak on record</em> — Euronews</div>
-          <div style="color:#e2e8f0;font-size:0.69rem;">Trust data: 70% of Americans hold "insular mindset"; journalists trusted by only 31%; global trust in health media -13 pts since 2019 (Edelman)</div>
-          <div style="margin-top:6px;color:#94a3b8;font-weight:700;">Documented Disinformation Accounts:</div>
-          <div>@zelenko.labs — Selling Z-Stack supplements tagging #ebola #norovirus #hantavirus</div>
-          <div>@dr.ashtoncaskey — World Cup conspiracy; 9,000+ views, virality score 20.73</div>
-          <div>@midnightwhispers673 — "lab accident or natural outbreak?" tagged #conspiracy
-          <div>@Tami1501 (X) — Recycled hantavirus cruise-ship evacuation photo (Tenerife) captioned as "movie set", viral within hours of PHEIC</div>
-          <div>ZeroHedge — Headline: "The WHO Drums Up Fear With Ebola After Hantavirus Scare Fails" — named conspiracy amplifier (TPM, May 2026)</div></div>
-          <div>Unnamed astrology influencer (100K followers) — linking outbreaks to Mars-Saturn conjunctions</div>
-          <div style="margin-top:6px;color:#fbbf24;font-weight:700;">WHO Africa Director Marie Roseline Belizaire (May 25):</div>
-          <div>"Treatment centre attacks are <em>linked to misinformation campaigns circulating on social media</em>, which are significantly slowing case investigations."</div>
-          <div style="color:#94a3b8;font-size:0.68rem;margin-top:4px;">Twitter/X does not allow web scraping of individual posts. Platform handles verified through article metadata, Muck Rack profiles, and institutional footers.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:14px;font-size:0.73rem;color:#cbd5e1;align-items:start;">
+
+      <!-- COL 1: Journalists + Institutions merged -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <div style="color:#94a3b8;font-weight:700;margin-bottom:6px;">✅ CONFIRMED JOURNALIST HANDLES</div>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div><a href="https://x.com/HelenBranswell" target="_blank" style="color:#38bdf8;">@HelenBranswell</a> — STAT News</div>
+            <div><a href="https://x.com/apoorva_nyc" target="_blank" style="color:#38bdf8;">@apoorva_nyc</a> — NYT Global Health</div>
+            <div><a href="https://x.com/nature" target="_blank" style="color:#38bdf8;">@nature</a> — Nature journal</div>
+            <div><a href="https://x.com/statnews" target="_blank" style="color:#38bdf8;">@statnews</a> — STAT News outlet</div>
+            <div><a href="https://x.com/DrTomFrieden" target="_blank" style="color:#38bdf8;">@DrTomFrieden</a> — Former CDC Director</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(148,163,184,0.2);padding-top:10px;">
+          <div style="color:#94a3b8;font-weight:700;margin-bottom:6px;">🏥 CONFIRMED INSTITUTIONAL ACCOUNTS</div>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div><a href="https://x.com/WHO" target="_blank" style="color:#38bdf8;">@WHO</a> · <a href="https://x.com/DrTedros" target="_blank" style="color:#38bdf8;">@DrTedros</a> — May 25: <em>"outpacing us"</em></div>
+            <div><a href="https://x.com/AfricaCDC" target="_blank" style="color:#38bdf8;">@AfricaCDC</a> — Declared PHECS May 18</div>
+            <div><a href="https://x.com/CDCgov" target="_blank" style="color:#38bdf8;">@CDCgov</a> — HAN00530 issued</div>
+            <div><a href="https://x.com/IFRC" target="_blank" style="color:#38bdf8;">@IFRC</a> — CHF 29M appeal; 3 volunteers dead</div>
+            <div><a href="https://x.com/MSF" target="_blank" style="color:#38bdf8;">@MSF</a> — Active Bunia, Drodro, Fataki</div>
+            <div><a href="https://x.com/FAORwanda" target="_blank" style="color:#38bdf8;">@FAORwanda</a> — Food security tracking</div>
+          </div>
         </div>
       </div>
+
+      <!-- COL 2: Named Experts + Disinfo Accounts -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div>
+          <div style="color:#94a3b8;font-weight:700;margin-bottom:6px;">🧬 NAMED EXPERTS IN COVERAGE</div>
+          <div style="display:flex;flex-direction:column;gap:3px;color:#e2e8f0;">
+            <div><strong>Ruth McCabe</strong> — Imperial College, lead modeller</div>
+            <div><strong>Armand Sprecher</strong> — MSF field physician, Ituri</div>
+            <div><strong>Darryl Falzarano</strong> — Virologist, VIDO Saskatchewan</div>
+            <div><strong>Tom Geisbert</strong> — Ebola expert, UT Medical Branch</div>
+            <div><strong>Vasee Moorthy</strong> — WHO R&amp;D Blueprint acting lead</div>
+            <div><strong>Abdi Rahman Mahamud</strong> — WHO Emergency Response Director</div>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(148,163,184,0.2);padding-top:10px;">
+          <div style="color:#94a3b8;font-weight:700;margin-bottom:6px;">🚫 DOCUMENTED DISINFO ACCOUNTS</div>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:0.69rem;">
+            <div><span style="color:#f87171;">@zelenko.labs</span> — Z-Stack supplement seller; tags #ebola #hantavirus</div>
+            <div><span style="color:#f87171;">@dr.ashtoncaskey</span> — World Cup conspiracy; 9K+ views, virality 20.73</div>
+            <div><span style="color:#f87171;">@midnightwhispers673</span> — "lab accident or cover-up?" #conspiracy</div>
+            <div><span style="color:#f87171;">@Tami1501</span> — Hantavirus ship photo sold as "Ebola is fake"</div>
+            <div><span style="color:#f87171;">ZeroHedge</span> — "WHO Drums Up Fear" — named amplifier (TPM)</div>
+            <div>Astrology influencer (100K) — Mars-Saturn conjunctions theory</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 3: Real-time monitoring data -->
+      <div>
+        <div style="color:#94a3b8;font-weight:700;margin-bottom:6px;">📡 REAL-TIME MONITORING DATA</div>
+        <div style="color:#e2e8f0;font-size:0.7rem;line-height:1.7;">
+          <div style="color:#fbbf24;font-weight:700;margin-bottom:4px;">Dr. Céline Gounder — Infectious Disease Physician:</div>
+          <div>📊 <strong>640 Ebola videos</strong> across TikTok, Instagram &amp; YouTube in first 48 hrs = <strong>68M views</strong></div>
+          <div>🚫 Disinfo keywords: <strong>50 videos · 2.6M views</strong> in same window</div>
+          <div style="margin-top:6px;color:#fbbf24;">📰 <strong>IRC warns (May 27):</strong> Ebola could become <em>deadliest outbreak on record</em> — Euronews</div>
+          <div style="margin-top:6px;color:#e2e8f0;">Trust data (Edelman): 70% insular mindset · journalists trusted by only 31% · health media trust −13 pts globally since 2019</div>
+          <div style="margin-top:8px;border-top:1px solid rgba(148,163,184,0.2);padding-top:8px;">
+            <div style="color:#fbbf24;font-weight:700;margin-bottom:4px;">WHO Africa Director Belizaire (May 25):</div>
+            <div style="color:#e2e8f0;font-style:italic;">"Treatment centre attacks are linked to misinformation campaigns circulating on social media, which are significantly slowing case investigations."</div>
+          </div>
+          <div style="color:#475569;font-size:0.66rem;margin-top:8px;">X/Twitter does not allow web scraping. Handles verified via article metadata, Muck Rack profiles &amp; institutional footers.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
